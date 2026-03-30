@@ -1,0 +1,27 @@
+# Virtual Environments
+.venv/
+venv/
+env/
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore training dataset (IMDB 50K)
+datasets/IMDB_Dataset.csv
+
+# Environment Variables
+.env
+
+# Streamlit Secrets
+.streamlit/secrets.toml
+
+# OS / Editor Files
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log
