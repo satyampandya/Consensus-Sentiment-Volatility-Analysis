@@ -115,10 +115,13 @@ with tab2:
                 if date_col:
                     df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
                     df = df.sort_values(by=date_col)
-                
+                 
                 col1, col2 = st.columns(2)
                 with col1: st.plotly_chart(visualizations.plot_sentiment_pie(df), use_container_width=True)
-                with col2: st.plotly_chart(visualizations.plot_sentiment_scatter(df, date_col), use_container_width=True)
+                if date_col:
+                    with col2: st.plotly_chart(visualizations.plot_sentiment_scatter(df, date_col), use_container_width=True)
+                else:
+                    st.info("Timeline chart skipped because no date column was found.")
                 
                 st.markdown("### 📊 Exploratory Data Analysis (EDA)")
                 st.plotly_chart(visualizations.plot_eda_length_vs_sentiment(df), use_container_width=True)

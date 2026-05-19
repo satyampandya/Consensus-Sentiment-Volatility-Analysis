@@ -9,19 +9,13 @@ def plot_sentiment_pie(df):
         color_discrete_map={"🟢 Satisfied": "#28a745", "🔴 Disappointed": "#dc3545", "🟡 Mixed Feelings": "#ffc107"}
     )
 
-def plot_sentiment_scatter(df, date_col=None):
-    if date_col:
-        x_axis, x_label, title = date_col, "Timeline (Actual Date)", 'Sentiment Distribution Over Time'
-    else:
-        df['Index'] = range(len(df))
-        x_axis, x_label, title = 'Sentiment Distribution (Sequential Order)'
-
+def plot_sentiment_scatter(df, date_col):
+    x_axis, x_label, title = date_col, "Timeline (Actual Date)", 'Sentiment Distribution Over Time'
     fig = px.scatter(
         df, x=x_axis, y='Positive_Score', color='Sentiment', title=title,
         labels={x_axis: x_label, 'Positive_Score': 'AI Positive Confidence'},
         color_discrete_map={"🟢 Satisfied": "#28a745", "🔴 Disappointed": "#dc3545", "🟡 Mixed Feelings": "#ffc107"}
     )
-    
     fig.add_hline(y=0.60, line_dash="dash", line_color="green")
     fig.add_hline(y=0.40, line_dash="dash", line_color="red")
     return fig
